@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть»
 
 * Студент: [Гриша Айдарцян](https://up.htmlacademy.ru/univer-js3-urfu/1/user/1548465).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Григорьев](https://htmlacademy.ru/profile/fuckhtml).
 
 ---
 
