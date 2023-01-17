@@ -5,6 +5,26 @@ const videoPath = 'https://download.blender.org/durian/trailer/sintel_trailer-48
 export const mockFilms: Film[] = [
   {
     id: 1,
+    title: 'The Grand Budapest Hotel',
+    description: 'About hotel',
+    genre: 'Comedies',
+    releaseYear: 2014,
+    rating: 7.9,
+    previewImage: 'img/bg-the-grand-budapest-hotel.jpg',
+    previewVideo: videoPath,
+    video: videoPath,
+    actors: ['Ralph Fiennes', 'Tony Revolori', 'Saoirse Ronan'],
+    director: 'Wes Anderson',
+    durationInMinutes: 100,
+    commentsCount: 1,
+    posterImage: 'img/bg-the-grand-budapest-hotel.jpg',
+    backgroundImage: 'img/bg-the-grand-budapest-hotel.jpg',
+    backgroundColor: 'red',
+    isFavorite: true,
+    isPromo: true
+  },
+  {
+    id: 2,
     title: 'Aviator',
     description: 'About planes',
     genre: 'Drama',
@@ -16,14 +36,14 @@ export const mockFilms: Film[] = [
     actors: ['Leonardo DiCaprio', 'Cate Blanchett', 'Matt Ross'],
     director: 'Martin Scorsese',
     durationInMinutes: 163,
-    commentsCount: 1,
+    commentsCount: 2,
     posterImage: 'img/aviator.jpg',
     backgroundImage: 'img/aviator.jpg',
     backgroundColor: 'brown',
     isFavorite: false
   },
   {
-    id: 2,
+    id: 3,
     title: 'Bohemian Rhapsody',
     description: 'About Queen',
     genre: 'Drama',
@@ -35,14 +55,14 @@ export const mockFilms: Film[] = [
     actors: ['Rami Malek', 'Lucy Boynton', 'Gwilim Lee'],
     director: 'Bryan Singer',
     durationInMinutes: 134,
-    commentsCount: 2,
+    commentsCount: 3,
     posterImage: 'img/bohemian-rhapsody.jpg',
     backgroundImage: 'img/bohemian-rhapsody.jpg',
     backgroundColor: 'white',
     isFavorite: true
   },
   {
-    id: 3,
+    id: 4,
     title: 'The Darjeeling Limited',
     description: 'About train adn three guys',
     genre: 'Comedies',
@@ -54,14 +74,14 @@ export const mockFilms: Film[] = [
     actors: ['Owen Wilson', 'Adrien Brody', 'Jason Schwartzman'],
     director: 'Wes Anderson',
     durationInMinutes: 92,
-    commentsCount: 3,
+    commentsCount: 4,
     posterImage: 'img/dardjeeling-limited.jpg',
     backgroundImage: 'img/dardjeeling-limited.jpg',
     backgroundColor: 'black',
     isFavorite: false
   },
   {
-    id: 4,
+    id: 5,
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
     description: 'About wizards',
     genre: 'Kids & Family',
@@ -73,14 +93,14 @@ export const mockFilms: Film[] = [
     actors: ['Eddie Redmayne', 'Johnny Depp', 'Katherine Waterston'],
     director: 'David Yates',
     durationInMinutes: 134,
-    commentsCount: 4,
+    commentsCount: 5,
     posterImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     backgroundImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     backgroundColor: 'black',
     isFavorite: true
   },
   {
-    id: 5,
+    id: 6,
     title: 'Johnny English',
     description: 'About secret agent',
     genre: 'Comedies',
@@ -92,14 +112,14 @@ export const mockFilms: Film[] = [
     actors: ['Rowan Atkinson', 'Natalie Imbruglia', 'Safe Weaver'],
     director: 'Peter Howit',
     durationInMinutes: 84,
-    commentsCount: 5,
+    commentsCount: 6,
     posterImage: 'img/johnny-english.jpg',
     backgroundImage: 'img/johnny-english.jpg',
     backgroundColor: 'yellow',
     isFavorite: true
   },
   {
-    id: 6,
+    id: 7,
     title: 'Macbeth',
     description: 'About history',
     genre: 'Drama',
@@ -111,14 +131,14 @@ export const mockFilms: Film[] = [
     actors: ['Michael Fassbender', 'Marion Cotillard', 'Paddy Considine'],
     director: 'Justin Kurzel',
     durationInMinutes: 113,
-    commentsCount: 6,
+    commentsCount: 7,
     posterImage: 'img/macbeth.jpg',
     backgroundImage: 'img/macbeth.jpg',
     backgroundColor: 'red',
     isFavorite: false
   },
   {
-    id: 7,
+    id: 8,
     title: 'Midnight Special',
     description: 'Description',
     genre: 'Thrillers',
@@ -130,34 +150,13 @@ export const mockFilms: Film[] = [
     actors: ['Michael Shannon', 'Joel Edgerton', 'Kirsten Dunst'],
     director: 'Jeff Nichols',
     durationInMinutes: 111,
-    commentsCount: 7,
+    commentsCount: 8,
     posterImage: 'img/midnight-special.jpg',
     backgroundImage: 'img/midnight-special.jpg',
     backgroundColor: 'white',
     isFavorite: true
   },
 ];
-
-export const PROMO_FILM: Film = {
-  id: 8,
-  title: 'The Grand Budapest Hotel',
-  description: 'About hotel',
-  genre: 'Comedies',
-  releaseYear: 2014,
-  rating: 7.9,
-  previewImage: 'img/bg-the-grand-budapest-hotel.jpg',
-  previewVideo: videoPath,
-  video: videoPath,
-  actors: ['Ralph Fiennes', 'Tony Revolori', 'Saoirse Ronan'],
-  director: 'Wes Anderson',
-  durationInMinutes: 100,
-  commentsCount: 8,
-  posterImage: 'img/bg-the-grand-budapest-hotel.jpg',
-  backgroundImage: 'img/bg-the-grand-budapest-hotel.jpg',
-  backgroundColor: 'red',
-  isFavorite: true,
-  isPromo: true
-};
 
 export function getFilmById(id: number): Film {
   return mockFilms.filter((m) => m.id === id)[0];

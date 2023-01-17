@@ -12,16 +12,15 @@ const FilmList: FC<FilmListProps> = (props) => {
     <div className='catalog__films-list'>
       {
         films.map((film) => (
-            <FilmCard
-              film={{
-                id: film.id,
-                title: film.title,
-                imagePath: film.posterImage,
-                previewVideoLink: film.previewVideo
-              }}
-              key={film.title}
-            />
-          )
+          <FilmCard
+            film={{
+              id: film.id,
+              title: film.title,
+              imagePath: film.posterImage,
+              previewPath: film.previewImage
+            }}
+            key={film.title}
+          />)
         )
       }
     </div>

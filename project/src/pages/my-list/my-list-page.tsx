@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import Header from '../../components/header/header';
-import FilmCard from '../../components/film-card/film-card';
 import { Footer } from '../../components/footer/footer';
 import { Film } from '../../types/film.type';
 import FilmList from '../../components/film-list/film-list';

@@ -18,6 +18,6 @@ const FilmCard: FC<FilmCardProps> = (props) => {
       </h3>
     </article>
   );
-}
+};
 
 export default FilmCard;

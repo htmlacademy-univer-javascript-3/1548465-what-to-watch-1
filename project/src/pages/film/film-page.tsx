@@ -1,5 +1,3 @@
-import FilmCard from '../../components/film-card/film-card';
-import Header from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { getFilmById } from '../../mocks/films';
 import { Link, useParams } from 'react-router-dom';
@@ -109,7 +107,7 @@ const FilmPage: FC<FilmPageProps> = (props) => {
                 </p>
 
                 <p className='film-card__starring'>
-                  <strong>{film?.actors.join(',')}</strong>
+                  <strong>{film?.actors.join(' ,')}</strong>
                 </p>
               </div>
             </div>
