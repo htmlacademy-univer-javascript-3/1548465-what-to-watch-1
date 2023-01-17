@@ -16,4 +16,5 @@ export type Film = {
   backgroundImage: string,
   backgroundColor: string,
   isFavorite: boolean,
+  isPromo?: boolean
 }
