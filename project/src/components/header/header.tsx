@@ -1,14 +1,20 @@
 import React from 'react';
 import Logo from '../logo/logo';
 
-export default function Header(props: { isMyListVisible?: boolean | undefined; myListCount?: number | undefined }): JSX.Element {
+type HeaderProps = {
+  isMyListVisible?: boolean | undefined;
+  myListCount?: number | undefined;
+}
+
+export default function Header(props: HeaderProps) {
+  const { isMyListVisible, myListCount } = props;
   return (
     <header className="page-header user-page__head">
       <Logo/>
-      {props.isMyListVisible &&
+      {isMyListVisible &&
         <h1 className="page-title user-page__title">
           My list
-          <span className="user-page__film-count">{props.myListCount ?? 0}</span>
+          <span className="user-page__film-count">{myListCount ?? 0}</span>
         </h1>}
       <ul className="user-block">
         <li className="user-block__item">

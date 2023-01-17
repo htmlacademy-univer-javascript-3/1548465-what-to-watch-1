@@ -1,19 +1,19 @@
 import React from 'react';
 
-type FilmCardProps = {
-  image: string;
+export type FilmCardProps = {
   name: string;
-  href: string;
+  imagePath: string;
 }
 
-export default function FilmCard(props: FilmCardProps): JSX.Element {
+export default function FilmCard(props: FilmCardProps) {
+  const {imagePath, name} = props;
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">
-        <img src={props.image} alt={props.name} width="280" height="175"/>
+        <img src={imagePath} alt={name} width="280" height="175"/>
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href={props.href}>{props.name}</a>
+        <a className="small-film-card__link" >{name}</a>
       </h3>
     </article>
   );
