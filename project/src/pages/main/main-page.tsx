@@ -1,8 +1,9 @@
 import React from 'react';
 import FilmCard from '../../components/film-card/film-card';
 import Header from '../../components/header/header';
-import Footer from '../../components/footer/footer';
+import { Footer } from '../../components/footer/footer';
 import { Film } from '../../types/film.type';
+import { genres } from '../../constants/genres';
 
 const DEFAULT_FILM_CARD_HREF = 'film-card-page.html';
 
@@ -62,18 +63,7 @@ export default function MainPage(props: Film): JSX.Element {
 
           <ul className="catalog__genres-list">
             {
-              [
-                'All genres',
-                'Comedies',
-                'Crime',
-                'Documentary',
-                'Dramas',
-                'Horror',
-                'Kids & Family',
-                'Romance',
-                'Sci-Fi',
-                'Thrillers'
-              ].map((item) => (
+              genres.map((item) => (
                 <li className="catalog__genres-item catalog__genres-item--active" key={item}>
                   <a href="#" className="catalog__genres-link">{item}</a>
                 </li>))
@@ -82,121 +72,121 @@ export default function MainPage(props: Film): JSX.Element {
 
           <div className="catalog__films-list">
             <FilmCard
-              img={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
+              image={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
               name={'Fantastic Beasts: The Crimes of Grindelwald'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/bohemian-rhapsody.jpg'}
+              image={'img/bohemian-rhapsody.jpg'}
               name={'Bohemian Rhapsody'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/macbeth.jpg'}
+              image={'img/macbeth.jpg'}
               name={'Macbeth'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/aviator.jpg'}
+              image={'img/aviator.jpg'}
               name={'Aviator'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/we-need-to-talk-about-kevin.jpg'}
+              image={'img/we-need-to-talk-about-kevin.jpg'}
               name={'We need to talk about Kevin'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/what-we-do-in-the-shadows.jpg'}
+              image={'img/what-we-do-in-the-shadows.jpg'}
               name={'What We Do in the Shadows'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/revenant.jpg'}
+              image={'img/revenant.jpg'}
               name={'Revenant'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/johnny-english.jpg'}
+              image={'img/johnny-english.jpg'}
               name={'Johnny English'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/shutter-island.jpg'}
+              image={'img/shutter-island.jpg'}
               name={'Shutter Island'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/pulp-fiction.jpg'}
+              image={'img/pulp-fiction.jpg'}
               name={'Pulp Fiction'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/no-country-for-old-men.jpg'}
+              image={'img/no-country-for-old-men.jpg'}
               name={'No Country for Old Men'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/snatch.jpg'}
+              image={'img/snatch.jpg'}
               name={'Snatch'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/moonrise-kingdom.jpg'}
+              image={'img/moonrise-kingdom.jpg'}
               name={'Moonrise Kingdom'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/seven-years-in-tibet.jpg'}
+              image={'img/seven-years-in-tibet.jpg'}
               name={'Seven Years in Tibet'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/midnight-special.jpg'}
+              image={'img/midnight-special.jpg'}
               name={'Midnight Special'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/war-of-the-worlds.jpg'}
+              image={'img/war-of-the-worlds.jpg'}
               name={'War of the Worlds'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/dardjeeling-limited.jpg'}
+              image={'img/dardjeeling-limited.jpg'}
               name={'Dardjeeling Limited'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/orlando.jpg'}
+              image={'img/orlando.jpg'}
               name={'Orlando'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/mindhunter.jpg'}
+              image={'img/mindhunter.jpg'}
               name={'Mindhunter'}
               href={DEFAULT_FILM_CARD_HREF}
             />
 
             <FilmCard
-              img={'img/midnight-special.jpg'}
+              image={'img/midnight-special.jpg'}
               name={'Midnight Special'}
               href={DEFAULT_FILM_CARD_HREF}
             />
