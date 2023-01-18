@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import MainPage from '../../pages/main/main-page';
 import NotFoundPage from '../../pages/not-found/not-found-page';
-import { AuthorizationStatus } from '../../types/authorization-status.enum';
 import AddReviewPage from '../../pages/add-review/add-review-page';
 import { ROUTES } from '../../constants/routes';
 import MyListPage from '../../pages/my-list/my-list-page';
@@ -15,7 +14,7 @@ import Loader from '../loader/loader';
 import { ALL_GENRES } from '../../constants/constants';
 
 const App : FC = () => {
-  const {films, activeGenre, isLoaded} = useAppSelector((selector) => selector);
+  const {films, activeGenre, isLoaded, authorizationStatus} = useAppSelector((selector) => selector);
   if (!isLoaded) {
     return <Loader/>;
   }
@@ -30,7 +29,7 @@ const App : FC = () => {
         <Route
           path={ROUTES.MYLIST}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <MyListPage films={filmList}/>
             </PrivateRoute>
           }

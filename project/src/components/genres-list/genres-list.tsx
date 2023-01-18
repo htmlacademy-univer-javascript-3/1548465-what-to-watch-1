@@ -1,7 +1,5 @@
 import { useAppDispatch } from '../../hooks/hooks';
-import { changeGenre, fillFilms } from '../../store/action';
-import { mockFilms } from '../../mocks/films';
-import { ALL_GENRES } from '../../constants/constants';
+import { changeGenre } from '../../store/action';
 
 type GenresListProps = {
   genres: string[];
@@ -12,8 +10,7 @@ function GenresList({genres, activeGenre}: GenresListProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleChangeActiveGenre = (genre: string) => {
-    dispatch(changeGenre({genre: genre}));
-    dispatch(fillFilms({films: mockFilms.filter((film) => film.genre === genre || genre === ALL_GENRES)}));
+    dispatch(changeGenre(genre));
   };
 
   return (

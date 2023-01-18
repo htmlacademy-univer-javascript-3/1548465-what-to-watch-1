@@ -8,3 +8,9 @@ export const ROUTES = {
   PLAYER: '/player/:id',
   NOTFOUND: '*'
 };
+
+export enum APIRoute {
+  Films = '/films',
+  Login = '/login',
+  Logout = '/logout'
+}
