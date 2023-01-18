@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import Header from '../../components/header/header';
-import { Footer } from '../../components/footer/footer';
+import Footer from '../../components/footer/footer';
 import FilmList from '../../components/film-list/film-list';
 import { useAppSelector } from '../../hooks/hooks';
 import { ALL_GENRES, SHOWN_FILMS_STEP } from '../../constants/constants';
@@ -20,9 +20,7 @@ const MainPage: FC = () => {
   const film = useAppSelector(getPromoFilm);
   const [visibleFilmsCount, setVisibleFilmsCount] = useState(SHOWN_FILMS_STEP);
   const genres = [ALL_GENRES].concat([...new Set(films.map((f) => f.genre))]);
-  const filteredFilms = films
-    .filter((f) => f.genre === activeGenre || activeGenre === ALL_GENRES)
-    .slice(0, visibleFilmsCount);
+  const filteredFilms = films.filter((f) => f.genre === activeGenre || activeGenre === ALL_GENRES);
 
   const showMoreClick = () => {
     setVisibleFilmsCount(visibleFilmsCount + SHOWN_FILMS_STEP);
@@ -33,7 +31,7 @@ const MainPage: FC = () => {
       <section className="film-card">
         <Header />
         <div className="film-card__bg">
-          <img src={film?.posterImage} alt={film?.title}/>
+          <img src={film?.backgroundImage} alt={film?.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -43,22 +41,22 @@ const MainPage: FC = () => {
             <div className="film-card__poster">
               <img
                 src={film?.posterImage}
-                alt={film?.title}
+                alt={film?.name}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film?.title}</h2>
+              <h2 className="film-card__title">{film?.name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{film?.genre}</span>
-                <span className="film-card__year">{film?.releaseYear}</span>
+                <span className="film-card__year">{film?.released}</span>
               </p>
 
               <div className="film-card__buttons">
                 <Link to={`/player/${film?.id ?? 0}`} className="btn btn--play film-card__button">
-                  <PlayButton isPlay/>
+                  <PlayButton />
                 </Link>
                 { authorizationStatus === AuthorizationStatus.Auth ? <MyListButton film={film}/> : null }
               </div>
@@ -71,13 +69,13 @@ const MainPage: FC = () => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList genres={genres} activeGenre={activeGenre}/>
+          <GenresList genres={genres.slice(0, 10)} activeGenre={activeGenre}/>
 
           <div className="catalog__films-list">
-            <FilmList films={filteredFilms}/>
+            <FilmList films={filteredFilms.slice(0, visibleFilmsCount)}/>
           </div>
 
-          { filteredFilms.length % SHOWN_FILMS_STEP === 0 && <ShowMore onClick={showMoreClick}/> }
+          {visibleFilmsCount + SHOWN_FILMS_STEP < filteredFilms.length && <ShowMore onClick={showMoreClick}/> }
         </section>
 
         <Footer/>

@@ -6,7 +6,7 @@ type GenresListProps = {
   activeGenre: string;
 };
 
-function GenresList({genres, activeGenre}: GenresListProps): JSX.Element {
+export default function GenresList({genres, activeGenre}: GenresListProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleChangeActiveGenre = (genre: string) => {
@@ -25,5 +25,3 @@ function GenresList({genres, activeGenre}: GenresListProps): JSX.Element {
     </ul>
   );
 }
-
-export default GenresList;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Logo from '../logo/logo';
 
-export const Footer: React.FC = () => (
+const Footer: FC = () => (
   <footer className="page-footer">
     <Logo light/>
     <div className="copyright">
@@ -9,3 +9,5 @@ export const Footer: React.FC = () => (
     </div>
   </footer>
 );
+
+export default Footer;

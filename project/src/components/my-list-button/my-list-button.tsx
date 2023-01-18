@@ -1,16 +1,16 @@
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { Film } from '../../types/film/film.type';
-import { getPromoFilm } from '../../store/reducer/main/main-selector';
-import { getFavoriteFilmsAction, fetchPromoFilm, setFavoriteFilmAction } from '../../store/api-action';
+import { getFavoriteFilms, getPromoFilm } from '../../store/reducer/main/main-selector';
+import { getFavoriteFilmsAction, fetchPromoFilm, setFavoriteFilmAction, fetchFilmById } from '../../store/api-action';
 
 type MyListButtonProps = {
   film: Film|null;
 }
 
-function MyListButton(props: MyListButtonProps) {
+export default function MyListButton(props: MyListButtonProps) {
   const {film} = props;
   const dispatch = useAppDispatch();
-  const favoriteFilms = useAppSelector(getFavoriteFilmsAction);
+  const favoriteFilms = useAppSelector(getFavoriteFilms);
   const promoFilm = useAppSelector(getPromoFilm);
 
   const favoriteAddHandler = () => {
@@ -18,20 +18,24 @@ function MyListButton(props: MyListButtonProps) {
     const filmId = Number(film?.id);
     dispatch(setFavoriteFilmAction({ id: filmId, status: status }));
     dispatch(getFavoriteFilmsAction());
-    if (film?.id === promoFilm?.id) {
+    if (filmId) {
+      dispatch(fetchFilmById(Number(filmId)));
+    }
+    if (filmId === promoFilm?.id) {
       dispatch(fetchPromoFilm());
     }
   };
+  const favoriteFilmsCount = favoriteFilms.length;
+  const isFavorite = film?.isFavorite;
 
   return (
     <button className="btn btn--list film-card__button" onClick={favoriteAddHandler}>
       <svg viewBox="0 0 19 20" width="19" height="20">
-        <use xlinkHref={film?.isFavorite ? '#in-list' : '#add'}/>
+        <use xlinkHref={isFavorite ? '#in-list' : '#add'}/>
       </svg>
       <span>My list</span>
-      <span className="film-card__count">{favoriteFilms.length}</span>
+      <span className="film-card__count">{favoriteFilmsCount}</span>
     </button>
   );
 }
 
-export default MyListButton;

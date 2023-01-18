@@ -4,6 +4,7 @@ import { logoutAction } from '../../store/api-action';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 import { getAuthorizationStatus, getUser } from '../../store/reducer/user/user-selector';
+import { ROUTES } from '../../constants/routes';
 
 type AuthedUserBlockProps = {
   avatarLink: string;
@@ -19,12 +20,14 @@ const AuthedUserBlock: FC<AuthedUserBlockProps> = (props) => {
   return (
     <>
       <li className="user-block__item">
-        <div className="user-block__avatar">
-          <img src={avatarLink} alt="User avatar" width="63" height="63" />
-        </div>
+        <Link to={ROUTES.MYLIST}>
+          <div className="user-block__avatar">
+            <img src={avatarLink} alt="User avatar" width="63" height="63" />
+          </div>
+        </Link>
       </li>
       <li className="user-block__item">
-        <a className="user-block__link" onClick={handleSignOutClick}>Sign out</a>
+        <Link to={ROUTES.MAIN} className="user-block__link" onClick={handleSignOutClick}>Sign out</Link>
       </li>
     </>
   );

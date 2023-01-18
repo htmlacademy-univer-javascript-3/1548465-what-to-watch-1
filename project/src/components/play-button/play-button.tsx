@@ -1,18 +1,10 @@
-type PlayButtonProps = {
-  isPlay: boolean;
-}
-
-function PlayButton(props: PlayButtonProps) {
-  const { isPlay } = props;
-
+export default function PlayButton() {
   return (
     <>
       <svg viewBox="0 0 19 19" width="19" height="19">
-        { isPlay ? <use xlinkHref="#play-s"/> : <use xlinkHref="#pause"/>}
+        <use xlinkHref="#play-s"/>
       </svg>
-      { isPlay ? <span>Play</span> : <span>Pause</span> }
+      <span>Play</span>
     </>
   );
 }
-
-export default PlayButton;
