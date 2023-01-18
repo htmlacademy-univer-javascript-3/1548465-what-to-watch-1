@@ -105,7 +105,7 @@ export const checkAuthAction = createAsyncThunk<User, undefined, ApiConfig>(
 
 export const loginAction = createAsyncThunk<User, AuthorizationResponse, ApiConfig>(
   'user/login',
-  async ({email: email, password}, { extra: api}) => {
+  async ({ email, password}, { extra: api}) => {
     const resp = await api.post<User>(APIRoute.Login, {email, password});
     return resp.data;
   }
