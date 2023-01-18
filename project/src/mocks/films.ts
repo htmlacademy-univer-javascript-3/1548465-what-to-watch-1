@@ -1,6 +1,6 @@
 import { Film } from '../types/film.type';
 
-const videoPath = 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4';
+const videoPath = 'https://static.videezy.com/system/resources/previews/000/000/168/original/Record.mp4';
 
 export const mockFilms: Film[] = [
   {
