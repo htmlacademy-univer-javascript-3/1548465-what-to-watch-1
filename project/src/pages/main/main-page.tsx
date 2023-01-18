@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 import FilmCard from '../../components/film-card/film-card';
 import Header from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { genres } from '../../constants/genres';
-import { films } from '../../constants/films';
+import { Film } from '../../types/film.type';
 
-type FilmProps = {
-  name: string;
-  genre: string;
-  releaseYear: number;
-  imagePath: string;
+type MainPageProps = {
+  film: Film;
+  filmsList: Film[];
 }
 
-export default function MainPage(props: FilmProps) {
+const MainPage: FC<MainPageProps> = (props) => {
+  const { film, filmsList } = props;
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={props.imagePath} alt={props.name}/>
+          <img src={film.posterImage} alt={film.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -28,18 +27,18 @@ export default function MainPage(props: FilmProps) {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={'img/the-grand-budapest-hotel-poster.jpg'}
-                alt="The Grand Budapest Hotel poster"
+                src={film.posterImage}
+                alt={film.title}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.name}</h2>
+              <h2 className="film-card__title">{film.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.releaseYear}</span>
+                <span className="film-card__genre">{film.genre}</span>
+                <span className="film-card__year">{film.releaseYear}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -77,8 +76,17 @@ export default function MainPage(props: FilmProps) {
 
           <div className="catalog__films-list">
             {
-              films.map((film) =>
-                <FilmCard {...film} key={film.name}/>)
+              filmsList.map((item) => (
+                <FilmCard
+                  film={{
+                    id: film.id,
+                    title: item.title,
+                    imagePath: item.posterImage,
+                    previewPath: item.previewVideo
+                  }}
+                  key={item.title}
+                />
+              ))
             }
           </div>
 
@@ -91,4 +99,6 @@ export default function MainPage(props: FilmProps) {
       </div>
     </>
   );
-}
+};
+
+export default MainPage;
