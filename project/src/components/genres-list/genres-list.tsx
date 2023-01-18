@@ -3,12 +3,12 @@ import { changeGenre, fillFilms } from '../../store/action';
 import { mockFilms } from '../../mocks/films';
 import { ALL_GENRES } from '../../constants/constants';
 
-type Props = {
+type GenresListProps = {
   genres: string[];
   activeGenre: string;
 };
 
-function GenresList({genres, activeGenre}: Props): JSX.Element {
+function GenresList({genres, activeGenre}: GenresListProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleChangeActiveGenre = (genre: string) => {

@@ -1,12 +1,12 @@
 import { FC, MouseEvent } from 'react';
 
-type Props = {
+type FilmTabItemProps = {
   name: string;
   isActive: boolean;
   onClick: (name: string) => void;
 }
 
-const FilmTabItem: FC<Props> = (props) => {
+const FilmTabItem: FC<FilmTabItemProps> = (props) => {
   const { name, isActive, onClick } = props;
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
