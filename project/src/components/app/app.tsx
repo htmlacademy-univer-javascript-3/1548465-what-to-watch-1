@@ -10,15 +10,18 @@ import PlayerPage from '../../pages/player/player-page';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
 import PrivateRoute from '../private-route/private-route';
 import FilmPage from '../../pages/film/film-page';
-import { Film } from '../../types/film.type';
+import { useAppSelector } from '../../hooks/hooks';
+import Loader from '../loader/loader';
+import { ALL_GENRES } from '../../constants/constants';
 
-type AppProps = {
-  film: Film;
-  filmList: Film[];
-}
-
-const App : FC<AppProps> = (props) => {
-  const { film, filmList } = props;
+const App : FC = () => {
+  const {films, activeGenre, isLoaded} = useAppSelector((selector) => selector);
+  if (!isLoaded) {
+    return <Loader/>;
+  }
+  const film = films[0];
+  const filmList = films
+    .filter((f) => f.genre === activeGenre || activeGenre === ALL_GENRES);
   return (
     <BrowserRouter>
       <Routes>
