@@ -1,22 +1,29 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changeGenre, fillFilms } from './action';
-import { mockFilms } from '../mocks/films';
+import { changeGenre, fillFilms, setFilmsLoadedStatus } from './action';
 import { ALL_GENRES } from '../constants/constants';
+import { Film } from '../types/film.type';
 
-const initialState = {
+type AppState = {
+  films: Film[];
+  activeGenre: string;
+  isLoaded: boolean;
+};
+
+const initialState: AppState = {
+  films: [],
   activeGenre: ALL_GENRES,
-  films: mockFilms
+  isLoaded: false,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeGenre, (state, action) => {
-      const { genre } = action.payload;
-
-      state.activeGenre = genre;
+      state.activeGenre = action.payload.genre;
     })
     .addCase(fillFilms, (state, action) => {
-      const { films } = action.payload;
-      state.films = films;
+      state.films = action.payload.films;
+    })
+    .addCase(setFilmsLoadedStatus, (state, action) => {
+      state.isLoaded = action.payload;
     });
 });
