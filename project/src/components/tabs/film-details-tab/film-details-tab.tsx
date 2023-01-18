@@ -1,5 +1,5 @@
-import {FC} from 'react';
-import {getRunTime} from '../../../helpers/common-helper';
+import { FC } from 'react';
+import { getRunTime } from '../../../helpers/common-helper';
 import { Film } from '../../../types/film/film.type';
 
 type FilmDetailsTabProps = {
@@ -19,7 +19,9 @@ const FilmDetailsTab: FC<FilmDetailsTabProps> = (props) => {
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Starring</strong>
           <span className="film-card__details-value">
-            {film?.actors.map((actor) => <>{actor}, <br /></>)}
+            <span className="film-card__details-value">
+              {film?.starring?.join(', ')}
+            </span>
           </span>
         </p>
       </div>
@@ -27,7 +29,7 @@ const FilmDetailsTab: FC<FilmDetailsTabProps> = (props) => {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Run Time</strong>
-          <span className="film-card__details-value">{getRunTime(film?.durationInMinutes)}</span>
+          <span className="film-card__details-value">{getRunTime(film?.runTime)}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Genre</strong>
@@ -35,7 +37,7 @@ const FilmDetailsTab: FC<FilmDetailsTabProps> = (props) => {
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>
-          <span className="film-card__details-value">{film?.releaseYear}</span>
+          <span className="film-card__details-value">{film?.released}</span>
         </p>
       </div>
     </div>

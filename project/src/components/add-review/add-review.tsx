@@ -1,43 +1,69 @@
-import React, {ChangeEvent, FC, FormEvent, Fragment, useState} from 'react';
+import React, { ChangeEvent, FC, FormEvent, Fragment, useState } from 'react';
 import { Review } from '../../types/review/review.type';
-import { api } from '../../services/api';
-import { APIRoute } from '../../constants/routes';
 import { ReviewData } from '../../types/review/review-data';
+import NotFoundPage from '../../pages/not-found/not-found-page';
+import { getError } from '../../store/reducer/main/main-selector';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { getFilm } from '../../store/reducer/film/film-selector';
+import { getUser } from '../../store/reducer/user/user-selector';
+import { useNavigate } from 'react-router-dom';
+import { postReview } from '../../store/api-action';
+import { setError } from '../../store/action';
+import { now } from 'moment';
 
-
-type Props = {
-  filmId: number;
-}
-
-const AddReview: FC<Props> = (props) => {
-  const { filmId } = props;
+const AddReview: FC = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const film = useAppSelector(getFilm);
+  const user = useAppSelector(getUser);
   const [formValue, setFormValue] = useState<ReviewData>({
     rating: 0,
-    reviewText: ''
+    comment: ''
   });
+  const error = useAppSelector(getError);
+
+  if (!film) {
+    return <NotFoundPage/>;
+  }
+
   const handleReviewTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setFormValue((prevValue) => ({
       ...prevValue,
-      reviewText: event.target.value
+      comment: event.target.value
     }));
   };
   const handleStarsCountChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFormValue((prevState) => ({
       ...prevState,
-      starsCount: Number(event.target.value)
+      rating: Number(event.target.value)
     }));
   };
 
   const onSubmit = (review: ReviewData) => {
-    api.post<Review[]>(`${APIRoute.Comments}/${filmId ?? 0}`, {...review}).then();
+    try {
+      const newReview: Review = {
+        id: film.id ?? 0,
+        filmId: film.id ?? 0,
+        comment: review.comment,
+        rating: review.rating,
+        date: now().toString(),
+        user: { id: user?.id ?? 0, name: user?.name ?? '' },
+      };
+      dispatch(postReview(newReview));
+      dispatch(setError(null));
+    } catch {
+      dispatch(setError('Can\'t post a form'));
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (formValue.reviewText && formValue.rating) {
+    if (formValue.comment && formValue.rating) {
       onSubmit(formValue);
+      navigate(`/films/${film?.id}`);
     }
+
   };
 
   return (
@@ -45,10 +71,18 @@ const AddReview: FC<Props> = (props) => {
       <div className="rating">
         <div className="rating__stars">
           {
-            Array.from(Array(10).keys()).map((cur) => (
-              <Fragment key={cur}>
-                <input className="rating__input" id={`star-${cur + 1}`} type="radio" name="rating" value={cur + 1} checked={formValue.rating === cur + 1} onChange={handleStarsCountChange}/>
-                <label className="rating__label" htmlFor={`star-${cur + 1}`}>Rating {cur + 1}</label>
+            Array.from(Array(10).keys()).map((star) => (
+              <Fragment key={star}>
+                <input
+                  className="rating__input"
+                  id={`star-${10 - star}`}
+                  type="radio"
+                  name="rating"
+                  value={10 - star}
+                  checked={formValue.rating === 10 - star}
+                  onChange={handleStarsCountChange}
+                />
+                <label className="rating__label" htmlFor={`star-${10 - star}`}>Rating {10 - star}</label>
               </Fragment>
             ))
           }
@@ -57,16 +91,24 @@ const AddReview: FC<Props> = (props) => {
       <div className="add-review__text">
         <textarea
           className="add-review__textarea"
-          name="review-text" id="review-text"
+          name="review-text"
+          id="review-text"
           placeholder="Review text"
-          value={formValue.reviewText}
+          value={formValue.comment}
           onChange={handleReviewTextChange}
           maxLength={400}
           minLength={50}
         />
         <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">Post</button>
+          <button
+            className="add-review__btn"
+            type="submit"
+            disabled={formValue.comment.length < 50 || formValue.comment.length >= 400 || formValue.rating === 0}
+          >
+            Post
+          </button>
         </div>
+        {error ? <p>{error}</p> : null}
       </div>
     </form>
   );

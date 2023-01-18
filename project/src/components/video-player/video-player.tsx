@@ -1,16 +1,16 @@
 import { FC, useEffect, useRef } from 'react';
-import { FilmShort } from '../../types/film/film-short.type';
+import { Film } from '../../types/film/film.type';
 
 type VideoPlayerProps = {
-  film: FilmShort;
+  film: Film;
   isPlaying: boolean;
-  needSound: boolean;
+  isSoundEnabled: boolean;
   width: number;
   height: number;
 }
 
 const VideoPlayer: FC<VideoPlayerProps> = (props) => {
-  const { film, isPlaying, needSound, width, height } = props;
+  const { film, isPlaying, isSoundEnabled, width, height } = props;
   const playerRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -29,9 +29,9 @@ const VideoPlayer: FC<VideoPlayerProps> = (props) => {
   return (
     <video
       ref={playerRef}
-      src={film.previewPath}
-      poster={film.imagePath}
-      muted={!needSound}
+      src={film.previewVideoLink}
+      poster={film.posterImage}
+      muted={!isSoundEnabled}
       width={width}
       height={height}
     />

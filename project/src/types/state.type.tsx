@@ -20,6 +20,7 @@ export type MainState = {
   activeGenre: string;
   isLoaded: boolean;
   error: string | null;
+  favoriteFilms: Film[];
 }
 
 export type UserState = {

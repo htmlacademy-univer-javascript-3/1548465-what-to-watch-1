@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-type Props = {
+type LogoProps = {
   light?: boolean;
 };
 
-const Logo: FC<Props> = (props) => {
+const Logo: FC<LogoProps> = (props) => {
   const { light } = props;
   return (
     <div className="logo">

@@ -1,11 +1,11 @@
-import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
-import { FilmShort } from '../../types/film/film-short.type';
+import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import VideoPlayer from '../video-player/video-player';
+import VideoPlayer from '../../video-player/video-player';
+import { Film } from '../../../types/film/film.type';
 
 export type FilmCardProps = {
-  film: FilmShort;
-  onHover: Dispatch<SetStateAction<number | null>>;
+  film: Film;
+  onHover: (film: Film) => void;
 }
 
 const FilmCard: FC<FilmCardProps> = (props) => {
@@ -28,25 +28,28 @@ const FilmCard: FC<FilmCardProps> = (props) => {
     setDoesVideoPlaying(false);
   };
   return (
-    <article
-      className="small-film-card catalog__films-card"
-      onMouseOver={(_) => {
+    <Link
+      to={`/films/${film.id}`}
+      className="small-film-card catalog__films-card small-film-card__link"
+      onMouseEnter={() => {
+        onHover(film);
         setDoesNeedVideoToPlay(true);
-        onHover?.((__) => film.id);
       }}
       onMouseLeave={handleCardMouseLeave}
     >
-      <VideoPlayer
-        film={film}
-        needSound={false}
-        isPlaying={doesVideoPlaying}
-        width={280}
-        height={175}
-      />
+      <div>
+        <VideoPlayer
+          film={film}
+          isSoundEnabled={false}
+          isPlaying={doesVideoPlaying}
+          width={280}
+          height={175}
+        />
+      </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={`/films/${film.id}`}>{film.title}</Link>
+        {film.name}
       </h3>
-    </article>
+    </Link>
   );
 };
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Review } from '../../../types/review/review.type';
-import FilmReview from '../../film-review/film-review';
+import FilmReview from '../../film/film-review/film-review';
 
 type FilmReviewsTabProps = {
   reviews: Review[];

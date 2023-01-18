@@ -21,17 +21,17 @@ export const fetchFilmsAction = createAsyncThunk<Film[], undefined, ApiConfig>(
   },
 );
 
-export const fetchFilmById = createAsyncThunk<Film, string, ApiConfig>(
+export const fetchFilmById = createAsyncThunk<Film, number, ApiConfig>(
   'fetchFilmById',
-  async (filmId: string, { extra: api }) => {
+  async (filmId: number, { extra: api }) => {
     const resp = await api.get<Film>(`${APIRoute.Films}/${filmId}`);
     return resp.data;
   }
 );
 
-export const fetchReviewsById = createAsyncThunk<Review[], string, ApiConfig>(
+export const fetchReviewsById = createAsyncThunk<Review[], number, ApiConfig>(
   'fetchReviewsById',
-  async (filmId: string, { extra: api }) => {
+  async (filmId: number, { extra: api }) => {
     const resp = await api.get<Review[]>(
       `${APIRoute.Comments}/${filmId}`
     );
@@ -39,9 +39,9 @@ export const fetchReviewsById = createAsyncThunk<Review[], string, ApiConfig>(
   }
 );
 
-export const fetchSimilarById = createAsyncThunk<Film[], string, ApiConfig>(
+export const fetchSimilarById = createAsyncThunk<Film[], number, ApiConfig>(
   'fetchSimilarById',
-  async (filmId: string, { extra: api }) => {
+  async (filmId: number, { extra: api }) => {
     const resp = await api.get<Film[]>(
       `${APIRoute.Films}/${filmId}${APIRoute.Similar}`
     );
@@ -51,9 +51,9 @@ export const fetchSimilarById = createAsyncThunk<Film[], string, ApiConfig>(
 
 export const postReview = createAsyncThunk<void, Review, ApiConfig>(
   'data/postReviewById',
-  async ({ text, rating, filmId }, { extra: api }) => {
+  async ({ comment, rating, filmId }, { extra: api }) => {
     await api.post<Review>(`${APIRoute.Comments}/${filmId}`, {
-      text,
+      comment: comment,
       rating,
     });
   }
@@ -75,20 +75,9 @@ export const setFavoriteFilmAction = createAsyncThunk<Film, { id: number; status
   }
 );
 
-export const changeFilmFavoriteStatus = createAsyncThunk<Film, { filmId: number; status: number }, ApiConfig>(
+createAsyncThunk<Film, { filmId: number; status: number }, ApiConfig>(
   'changeFilmFavoriteStatus',
-  async ({ filmId: id, status: isFavorite }, { dispatch, extra: api }) => {
-    const resp = await api.post<Film>(
-      `${APIRoute.Favorite}/${id}/${isFavorite}`
-    );
-
-    return resp.data;
-  }
-);
-
-export const changePromoFavoriteStatus = createAsyncThunk<Film, { filmId: number; status: number }, ApiConfig>(
-  'changePromoFavoriteStatus',
-  async ({ filmId: id, status: isFavorite }, { dispatch, extra: api }) => {
+  async ({ filmId: id, status: isFavorite }, { extra: api }) => {
     const resp = await api.post<Film>(
       `${APIRoute.Favorite}/${id}/${isFavorite}`
     );
@@ -116,7 +105,7 @@ export const checkAuthAction = createAsyncThunk<User, undefined, ApiConfig>(
 
 export const loginAction = createAsyncThunk<User, AuthorizationResponse, ApiConfig>(
   'user/login',
-  async ({login: email, password}, { extra: api}) => {
+  async ({ email, password}, { extra: api}) => {
     const resp = await api.post<User>(APIRoute.Login, {email, password});
     return resp.data;
   }
@@ -124,7 +113,7 @@ export const loginAction = createAsyncThunk<User, AuthorizationResponse, ApiConf
 
 export const logoutAction = createAsyncThunk<void, undefined, ApiConfig>(
   'user/logout',
-  async (_arg, {dispatch, extra: api}) => {
+  async (_arg, {extra: api}) => {
     await api.delete(APIRoute.Logout);
   }
 );
