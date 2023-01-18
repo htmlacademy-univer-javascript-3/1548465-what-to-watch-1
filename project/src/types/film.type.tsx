@@ -11,7 +11,7 @@ export type Film = {
   actors: string[];
   director: string;
   durationInMinutes: number;
-  commentsCount: number;
+  reviewsCount: number;
   posterImage: string;
   backgroundImage: string;
   backgroundColor: string;
