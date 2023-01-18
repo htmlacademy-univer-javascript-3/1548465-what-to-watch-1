@@ -75,14 +75,14 @@ const AddReview: FC = () => {
               <Fragment key={star}>
                 <input
                   className="rating__input"
-                  id={`star-${star + 1}`}
+                  id={`star-${10 - star}`}
                   type="radio"
                   name="rating"
-                  value={star + 1}
-                  checked={formValue.rating === star + 1}
+                  value={10 - star}
+                  checked={formValue.rating === 10 - star}
                   onChange={handleStarsCountChange}
                 />
-                <label className="rating__label" htmlFor={`star-${star + 1}`}>Rating {star + 1}</label>
+                <label className="rating__label" htmlFor={`star-${10 - star}`}>Rating {10 - star}</label>
               </Fragment>
             ))
           }

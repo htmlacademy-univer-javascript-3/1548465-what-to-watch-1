@@ -75,20 +75,9 @@ export const setFavoriteFilmAction = createAsyncThunk<Film, { id: number; status
   }
 );
 
-export const changeFilmFavoriteStatus = createAsyncThunk<Film, { filmId: number; status: number }, ApiConfig>(
+createAsyncThunk<Film, { filmId: number; status: number }, ApiConfig>(
   'changeFilmFavoriteStatus',
-  async ({ filmId: id, status: isFavorite }, { dispatch, extra: api }) => {
-    const resp = await api.post<Film>(
-      `${APIRoute.Favorite}/${id}/${isFavorite}`
-    );
-
-    return resp.data;
-  }
-);
-
-export const changePromoFavoriteStatus = createAsyncThunk<Film, { filmId: number; status: number }, ApiConfig>(
-  'changePromoFavoriteStatus',
-  async ({ filmId: id, status: isFavorite }, { dispatch, extra: api }) => {
+  async ({ filmId: id, status: isFavorite }, { extra: api }) => {
     const resp = await api.post<Film>(
       `${APIRoute.Favorite}/${id}/${isFavorite}`
     );
@@ -116,7 +105,7 @@ export const checkAuthAction = createAsyncThunk<User, undefined, ApiConfig>(
 
 export const loginAction = createAsyncThunk<User, AuthorizationResponse, ApiConfig>(
   'user/login',
-  async ({login: email, password}, { extra: api}) => {
+  async ({email: email, password}, { extra: api}) => {
     const resp = await api.post<User>(APIRoute.Login, {email, password});
     return resp.data;
   }
@@ -124,7 +113,7 @@ export const loginAction = createAsyncThunk<User, AuthorizationResponse, ApiConf
 
 export const logoutAction = createAsyncThunk<void, undefined, ApiConfig>(
   'user/logout',
-  async (_arg, {dispatch, extra: api}) => {
+  async (_arg, {extra: api}) => {
     await api.delete(APIRoute.Logout);
   }
 );

@@ -4,13 +4,13 @@ import { Film } from '../../types/film/film.type';
 type VideoPlayerProps = {
   film: Film;
   isPlaying: boolean;
-  needSound: boolean;
+  isSoundEnabled: boolean;
   width: number;
   height: number;
 }
 
 const VideoPlayer: FC<VideoPlayerProps> = (props) => {
-  const { film, isPlaying, needSound, width, height } = props;
+  const { film, isPlaying, isSoundEnabled, width, height } = props;
   const playerRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const VideoPlayer: FC<VideoPlayerProps> = (props) => {
       ref={playerRef}
       src={film.previewVideoLink}
       poster={film.posterImage}
-      muted={!needSound}
+      muted={!isSoundEnabled}
       width={width}
       height={height}
     />

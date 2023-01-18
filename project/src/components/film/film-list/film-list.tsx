@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
-import { Film } from '../../types/film/film.type';
+import { Film } from '../../../types/film/film.type';
 import FilmCard from '../film-card/film-card';
-import { useAppSelector } from '../../hooks/hooks';
-import { getFilm } from '../../store/reducer/film/film-selector';
+import { useAppSelector } from '../../../hooks/hooks';
+import { getFilm } from '../../../store/reducer/film/film-selector';
 
 type FilmListProps = {
   films: Film[];

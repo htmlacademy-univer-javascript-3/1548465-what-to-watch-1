@@ -11,9 +11,9 @@ import { fetchFilmById, fetchReviewsById, fetchSimilarById } from '../../store/a
 import NotFoundPage from '../not-found/not-found-page';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import MyListButton from '../../components/my-list-button/my-list-button';
+import MyListButton from '../../components/buttons/my-list-button/my-list-button';
 import Loader from '../../components/loader/loader';
-import FilmList from '../../components/film-list/film-list';
+import FilmList from '../../components/film/film-list/film-list';
 import Tabs from '../../components/tabs/tabs';
 
 const FilmPage: FC = () => {

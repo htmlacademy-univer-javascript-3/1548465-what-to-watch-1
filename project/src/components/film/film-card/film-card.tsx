@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import VideoPlayer from '../video-player/video-player';
-import { Film } from '../../types/film/film.type';
+import VideoPlayer from '../../video-player/video-player';
+import { Film } from '../../../types/film/film.type';
 
 export type FilmCardProps = {
   film: Film;
@@ -31,7 +31,7 @@ const FilmCard: FC<FilmCardProps> = (props) => {
     <Link
       to={`/films/${film.id}`}
       className="small-film-card catalog__films-card small-film-card__link"
-      onMouseEnter={(evt) => {
+      onMouseEnter={() => {
         onHover(film);
         setDoesNeedVideoToPlay(true);
       }}
@@ -40,7 +40,7 @@ const FilmCard: FC<FilmCardProps> = (props) => {
       <div>
         <VideoPlayer
           film={film}
-          needSound={false}
+          isSoundEnabled={false}
           isPlaying={doesVideoPlaying}
           width={280}
           height={175}

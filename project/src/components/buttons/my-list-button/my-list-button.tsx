@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { Film } from '../../types/film/film.type';
-import { getFavoriteFilms, getPromoFilm } from '../../store/reducer/main/main-selector';
-import { getFavoriteFilmsAction, fetchPromoFilm, setFavoriteFilmAction, fetchFilmById } from '../../store/api-action';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { Film } from '../../../types/film/film.type';
+import { getFavoriteFilms, getPromoFilm } from '../../../store/reducer/main/main-selector';
+import { getFavoriteFilmsAction, fetchPromoFilm, setFavoriteFilmAction, fetchFilmById } from '../../../store/api-action';
 
 type MyListButtonProps = {
   film: Film|null;
@@ -38,4 +38,3 @@ export default function MyListButton(props: MyListButtonProps) {
     </button>
   );
 }
-

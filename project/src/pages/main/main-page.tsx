@@ -1,17 +1,17 @@
 import React, { FC, useState } from 'react';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import FilmList from '../../components/film-list/film-list';
+import FilmList from '../../components/film/film-list/film-list';
 import { useAppSelector } from '../../hooks/hooks';
 import { ALL_GENRES, SHOWN_FILMS_STEP } from '../../constants/constants';
 import GenresList from '../../components/genres-list/genres-list';
-import ShowMore from '../../components/show_more/show-more';
+import ShowMore from '../../components/show-more/show-more';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 import { Link } from 'react-router-dom';
 import { getAuthorizationStatus } from '../../store/reducer/user/user-selector';
 import { getActiveGenre, getFilms, getPromoFilm } from '../../store/reducer/main/main-selector';
-import PlayButton from '../../components/play-button/play-button';
-import MyListButton from '../../components/my-list-button/my-list-button';
+import PlayButton from '../../components/buttons/play-button/play-button';
+import MyListButton from '../../components/buttons/my-list-button/my-list-button';
 
 const MainPage: FC = () => {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);

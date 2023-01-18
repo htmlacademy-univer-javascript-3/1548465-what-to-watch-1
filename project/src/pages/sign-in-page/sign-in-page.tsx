@@ -36,7 +36,7 @@ const SignInPage: FC = () => {
 
     if (loginRef.current !== null && passwordRef.current !== null && isValidPassword(String(passwordRef.current?.value))) {
       onSubmit({
-        login: loginRef.current.value,
+        email: loginRef.current.value,
         password: passwordRef.current.value
       });
     } else {

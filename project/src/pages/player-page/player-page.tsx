@@ -6,8 +6,8 @@ import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {getFilm} from '../../store/reducer/film/film-selector';
 import {fetchFilmById} from '../../store/api-action';
 import { ROUTES } from '../../constants/routes';
-import PlayButton from '../../components/play-button/play-button';
-import PauseButton from '../../components/pause-button/pause-button';
+import PlayButton from '../../components/buttons/play-button/play-button';
+import PauseButton from '../../components/buttons/pause-button/pause-button';
 
 
 export default function PlayerPage() {

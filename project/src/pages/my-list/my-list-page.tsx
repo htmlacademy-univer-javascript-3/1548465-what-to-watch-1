@@ -6,7 +6,7 @@ import {getFavoriteFilmsAction} from '../../store/api-action';
 import {getAuthorizationStatus} from '../../store/reducer/user/user-selector';
 import {getFavoriteFilms} from '../../store/reducer/main/main-selector';
 
-import FilmList from '../../components/film-list/film-list';
+import FilmList from '../../components/film/film-list/film-list';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
