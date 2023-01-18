@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import FilmCard from '../../components/film-card/film-card';
 import Header from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { genres } from '../../constants/genres';
 import { Film } from '../../types/film.type';
+import FilmList from '../../components/film-list/film-list';
 
 type MainPageProps = {
   film: Film;
@@ -75,19 +75,7 @@ const MainPage: FC<MainPageProps> = (props) => {
           </ul>
 
           <div className="catalog__films-list">
-            {
-              filmsList.map((item) => (
-                <FilmCard
-                  film={{
-                    id: film.id,
-                    title: item.title,
-                    imagePath: item.posterImage,
-                    previewPath: item.previewVideo
-                  }}
-                  key={item.title}
-                />
-              ))
-            }
+            <FilmList films={filmsList}/>
           </div>
 
           <div className="catalog__more">
