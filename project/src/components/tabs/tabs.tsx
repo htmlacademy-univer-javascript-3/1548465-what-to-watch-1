@@ -1,10 +1,10 @@
-import { Film } from '../../types/film.type';
+import { Film } from '../../types/film/film.type';
 import { FC, useState } from 'react';
 import FilmTabItem from './tabs-item';
 import FilmDetailsTab from './film-details-tab/film-details-tab';
 import FilmOverviewTab from './film-overview-tab/film-overview-tab';
 import FilmReviewsTab from './film-review-tab/film-review-tab';
-import { Review } from '../../types/review.type';
+import { Review } from '../../types/review/review.type';
 import { TABS } from '../../constants/constants';
 
 type TabsProps = {

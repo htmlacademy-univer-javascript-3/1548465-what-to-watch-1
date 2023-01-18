@@ -1,4 +1,4 @@
-import { Film } from '../types/film.type';
+import { Film } from '../types/film/film.type';
 
 const videoPath = 'https://static.videezy.com/system/resources/previews/000/000/168/original/Record.mp4';
 

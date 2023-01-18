@@ -2,7 +2,7 @@ import UserBlock from '../../components/user-block/user-block';
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/hooks';
-import { Film } from '../../types/film.type';
+import { Film } from '../../types/film/film.type';
 import { api } from '../../store';
 import { ROUTES } from '../../constants/routes';
 import Logo from '../../components/logo/logo';

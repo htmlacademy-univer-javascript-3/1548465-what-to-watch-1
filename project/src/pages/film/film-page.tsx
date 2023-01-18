@@ -1,19 +1,22 @@
 import { Footer } from '../../components/footer/footer';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import React, { FC, useEffect, useState } from 'react';
-import { Film } from '../../types/film.type';
+import { Film } from '../../types/film/film.type';
 import FilmList from '../../components/film-list/film-list';
 import Tabs from '../../components/tabs/tabs';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { Review } from '../../types/review.type';
+import { Review } from '../../types/review/review.type';
 import Loader from '../../components/loader/loader';
 import { ROUTES } from '../../constants/routes';
 import { StatusCodes } from 'http-status-codes';
 import { AxiosError } from 'axios';
 import { api } from '../../store';
 import Header from '../../components/header/header';
-import { AuthorizationStatus } from '../../types/authorization-status.enum';
+import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 import { redirectToRoute } from '../../store/action';
+import { getAuthorizationStatus } from '../../store/reducer/user/user-selector';
+import PlayButton from '../../components/play-button/play-button';
+import MyListButton from '../../components/my-list-button/my-list-button';
 
 
 const FilmPage: FC = () => {
@@ -21,7 +24,7 @@ const FilmPage: FC = () => {
   const [film, setFilm] = useState<null | Film>(null);
   const [similarFilms, setSimilarFilms] = useState<null | Film[]>(null);
   const [reviews, setReviews] = useState<null | Review[]>(null);
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
@@ -79,21 +82,10 @@ const FilmPage: FC = () => {
               </p>
 
               <div className='film-card__buttons'>
-                <button className='btn btn--play film-card__button' type='button'>
-                  <svg viewBox='0 0 19 19' width='19' height='19'>
-                    <use xlinkHref='#play-s'>
-                    </use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className='btn btn--list film-card__button' type='button'>
-                  <svg viewBox='0 0 19 20' width='19' height='20'>
-                    <use xlinkHref='#add'>
-                    </use>
-                  </svg>
-                  <span>My list</span>
-                  <span className='film-card__count'>9</span>
-                </button>
+                <Link to={`/player/${film?.id ?? 0}`} className="btn btn--play film-card__button">
+                  <PlayButton isPlay/>
+                </Link>
+                { authorizationStatus === AuthorizationStatus.Auth ? <MyListButton film={film}/> : null }
                 {
                   authorizationStatus === AuthorizationStatus.Auth &&
                   <a href={id ? `/films/${id}/review` : '#'} className="btn film-card__button">Add review</a>

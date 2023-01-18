@@ -1,14 +1,15 @@
 import React, { FC, FormEvent, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { useNavigate } from 'react-router-dom';
-import { AuthorizationStatus } from '../../types/authorization-status.enum';
+import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 import { ROUTES } from '../../constants/routes';
 import { loginAction } from '../../store/api-action';
 import Header from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
+import { getAuthorizationStatus } from '../../store/reducer/user/user-selector';
 
 const SignInPage: FC = () => {
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const navigate = useNavigate();
 
   if (authorizationStatus === AuthorizationStatus.Auth){

@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {getRunTime} from '../../../helpers/common-helper';
-import { Film } from '../../../types/film.type';
+import { Film } from '../../../types/film/film.type';
 
 type FilmDetailsTabProps = {
   film: Film;
