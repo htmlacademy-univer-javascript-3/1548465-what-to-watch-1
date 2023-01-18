@@ -14,12 +14,12 @@ const FilmDetailsTab: FC<FilmDetailsTabProps> = (props) => {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Director</strong>
-          <span className="film-card__details-value">{film.director}</span>
+          <span className="film-card__details-value">{film?.director}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Starring</strong>
           <span className="film-card__details-value">
-            {film.actors.map((actor) => <>{actor}, <br /></>)}
+            {film?.actors.map((actor) => <>{actor}, <br /></>)}
           </span>
         </p>
       </div>
@@ -27,15 +27,15 @@ const FilmDetailsTab: FC<FilmDetailsTabProps> = (props) => {
       <div className="film-card__text-col">
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Run Time</strong>
-          <span className="film-card__details-value">{getRunTime(film.durationInMinutes)}</span>
+          <span className="film-card__details-value">{getRunTime(film?.durationInMinutes)}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Genre</strong>
-          <span className="film-card__details-value">{film.genre}</span>
+          <span className="film-card__details-value">{film?.genre}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>
-          <span className="film-card__details-value">{film.releaseYear}</span>
+          <span className="film-card__details-value">{film?.releaseYear}</span>
         </p>
       </div>
     </div>
