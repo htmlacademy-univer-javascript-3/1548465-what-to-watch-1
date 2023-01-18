@@ -5,7 +5,7 @@ import FilmDetailsTab from './film-details-tab/film-details-tab';
 import FilmOverviewTab from './film-overview-tab/film-overview-tab';
 import FilmReviewsTab from './film-review-tab/film-review-tab';
 import { Review } from '../../types/review.type';
-import { TABS } from '../../constants/tabs';
+import { TABS } from '../../constants/constants';
 
 type TabsProps = {
   film: Film;
