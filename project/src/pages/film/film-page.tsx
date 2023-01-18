@@ -32,12 +32,12 @@ const FilmPage: FC = () => {
     }
   }, [film, dispatch, id]);
 
-  if (!film) {
-    return <NotFoundPage />;
-  }
-
   if (!isDataLoaded) {
     return <Loader />;
+  }
+
+  if (!film) {
+    return <NotFoundPage />;
   }
 
   return (
