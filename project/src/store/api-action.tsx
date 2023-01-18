@@ -51,9 +51,9 @@ export const fetchSimilarById = createAsyncThunk<Film[], number, ApiConfig>(
 
 export const postReview = createAsyncThunk<void, Review, ApiConfig>(
   'data/postReviewById',
-  async ({ text, rating, filmId }, { extra: api }) => {
+  async ({ comment, rating, filmId }, { extra: api }) => {
     await api.post<Review>(`${APIRoute.Comments}/${filmId}`, {
-      text,
+      comment: comment,
       rating,
     });
   }

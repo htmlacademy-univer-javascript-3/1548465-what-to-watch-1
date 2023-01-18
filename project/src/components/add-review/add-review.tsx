@@ -18,7 +18,7 @@ const AddReview: FC = () => {
   const user = useAppSelector(getUser);
   const [formValue, setFormValue] = useState<ReviewData>({
     rating: 0,
-    reviewText: ''
+    comment: ''
   });
   const error = useAppSelector(getError);
 
@@ -29,7 +29,7 @@ const AddReview: FC = () => {
   const handleReviewTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setFormValue((prevValue) => ({
       ...prevValue,
-      reviewText: event.target.value
+      comment: event.target.value
     }));
   };
   const handleStarsCountChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -42,12 +42,12 @@ const AddReview: FC = () => {
   const onSubmit = (review: ReviewData) => {
     try {
       const newReview: Review = {
-        text: review.reviewText,
-        rating: review.rating,
-        filmId: film.id ?? 0,
         id: film.id ?? 0,
+        filmId: film.id ?? 0,
+        comment: review.comment,
+        rating: review.rating,
+        date: now().toString(),
         user: { id: user?.id ?? 0, name: user?.name ?? '' },
-        publicationDate: now().toString()
       };
       dispatch(postReview(newReview));
       dispatch(setError(null));
@@ -59,10 +59,11 @@ const AddReview: FC = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (formValue.reviewText && formValue.rating) {
+    if (formValue.comment && formValue.rating) {
       onSubmit(formValue);
       navigate(`/films/${film?.id}`);
     }
+
   };
 
   return (
@@ -93,7 +94,7 @@ const AddReview: FC = () => {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          value={formValue.reviewText}
+          value={formValue.comment}
           onChange={handleReviewTextChange}
           maxLength={400}
           minLength={50}
@@ -102,7 +103,7 @@ const AddReview: FC = () => {
           <button
             className="add-review__btn"
             type="submit"
-            disabled={formValue.reviewText.length < 50 || formValue.reviewText.length >= 400 || formValue.rating === 0}
+            disabled={formValue.comment.length < 50 || formValue.comment.length >= 400 || formValue.rating === 0}
           >
             Post
           </button>
