@@ -1,4 +1,4 @@
-export type AuthResponse = {
+export type AuthorizationResponse = {
   login: string;
   password: string;
 }

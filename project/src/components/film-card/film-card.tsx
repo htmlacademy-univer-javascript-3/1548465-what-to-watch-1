@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
-import { FilmShort } from '../../types/film-short.type';
+import { FilmShort } from '../../types/film/film-short.type';
 import { Link } from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
 

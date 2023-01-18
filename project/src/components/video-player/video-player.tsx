@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import { FilmShort } from '../../types/film-short.type';
+import { FilmShort } from '../../types/film/film-short.type';
 
 type VideoPlayerProps = {
   film: FilmShort;

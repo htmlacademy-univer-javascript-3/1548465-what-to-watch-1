@@ -1,8 +1,8 @@
 import React, {ChangeEvent, FC, FormEvent, Fragment, useState} from 'react';
-import { Review } from '../../types/review.type';
+import { Review } from '../../types/review/review.type';
 import { api } from '../../services/api';
 import { APIRoute } from '../../constants/routes';
-import { ReviewData } from '../../types/review-data';
+import { ReviewData } from '../../types/review/review-data';
 
 
 type Props = {
@@ -29,7 +29,7 @@ const AddReview: FC<Props> = (props) => {
   };
 
   const onSubmit = (review: ReviewData) => {
-    api.post<Review[]>(`${APIRoute.Comments}/${filmId}`, {...review}).then();
+    api.post<Review[]>(`${APIRoute.Comments}/${filmId ?? 0}`, {...review}).then();
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -55,7 +55,15 @@ const AddReview: FC<Props> = (props) => {
         </div>
       </div>
       <div className="add-review__text">
-        <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" value={formValue.reviewText} onChange={handleReviewTextChange}/>
+        <textarea
+          className="add-review__textarea"
+          name="review-text" id="review-text"
+          placeholder="Review text"
+          value={formValue.reviewText}
+          onChange={handleReviewTextChange}
+          maxLength={400}
+          minLength={50}
+        />
         <div className="add-review__submit">
           <button className="add-review__btn" type="submit">Post</button>
         </div>
