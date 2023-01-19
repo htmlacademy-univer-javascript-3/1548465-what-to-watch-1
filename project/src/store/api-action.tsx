@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Film } from '../types/film/film.type';
 import { AppDispatch, State } from '../types/state.type';
-import { APIRoute } from '../constants/routes';
+import { APIRoute } from '../constants/webRoutes';
 import { User } from '../types/user/user';
 import { AuthorizationResponse } from '../types/authorization/authorization-response';
 import { Review } from '../types/review/review.type';

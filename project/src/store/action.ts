@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
-import { ROUTES } from '../constants/routes';
+import { WebRoutes } from '../constants/webRoutes';
 
 export const changeGenre = createAction<string>('changeGenre');
-export const redirectToRoute = createAction<ROUTES | string>('redirectToRoute');
+export const redirectToRoute = createAction<WebRoutes | string>('redirectToRoute');
 export const setError = createAction<string | null>('setError');

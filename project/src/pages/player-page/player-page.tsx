@@ -5,7 +5,7 @@ import moment from 'moment';
 import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {getFilm} from '../../store/reducer/film/film-selector';
 import {fetchFilmById} from '../../store/api-action';
-import { ROUTES } from '../../constants/routes';
+import { WebRoutes } from '../../constants/webRoutes';
 import PlayButton from '../../components/buttons/play-button/play-button';
 import PauseButton from '../../components/buttons/pause-button/pause-button';
 
@@ -56,7 +56,7 @@ export default function PlayerPage() {
   };
 
   if (!film) {
-    return <Link to={ROUTES.MAIN}/>;
+    return <Link to={WebRoutes.MAIN}/>;
   }
 
   return (

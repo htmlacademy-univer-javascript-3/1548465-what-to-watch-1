@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import MainPage from '../../pages/main/main-page';
 import NotFoundPage from '../../pages/not-found/not-found-page';
 import AddReviewPage from '../../pages/add-review/add-review-page';
-import { ROUTES } from '../../constants/routes';
+import { WebRoutes } from '../../constants/webRoutes';
 import MyListPage from '../../pages/my-list/my-list-page';
 import { Route, Routes } from 'react-router-dom';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
@@ -24,28 +24,28 @@ const App : FC = () => {
 
   return (
     <Routes>
-      <Route path={ROUTES.MAIN} element={<MainPage/>}/>
-      <Route path={ROUTES.SIGNIN} element={<SignInPage/>}/>
+      <Route path={WebRoutes.MAIN} element={<MainPage/>}/>
+      <Route path={WebRoutes.SIGNIN} element={<SignInPage/>}/>
       <Route
-        path={ROUTES.MYLIST}
+        path={WebRoutes.MYLIST}
         element={
           <PrivateRoute authorizationStatus={authorizationStatus}>
             <MyListPage />
           </PrivateRoute>
         }
       />
-      <Route path={ROUTES.FILM} element={<FilmPage />}/>
+      <Route path={WebRoutes.FILM} element={<FilmPage />}/>
       <Route
-        path={ROUTES.ADDREVIEW}
+        path={WebRoutes.ADDREVIEW}
         element={
           <PrivateRoute authorizationStatus={authorizationStatus}>
             <AddReviewPage />
           </PrivateRoute>
         }
       />
-      <Route path={ROUTES.PLAYER} element={<PlayerPage/>}/>
-      <Route path={ROUTES.NOTFOUND} element={<NotFoundPage/>}/>
-      <Route path={ROUTES.DEFAULT} element={<NotFoundPage/>}/>
+      <Route path={WebRoutes.PLAYER} element={<PlayerPage/>}/>
+      <Route path={WebRoutes.NOTFOUND} element={<NotFoundPage/>}/>
+      <Route path={WebRoutes.DEFAULT} element={<NotFoundPage/>}/>
     </Routes>
   );
 };

@@ -1,6 +1,6 @@
 import { State } from '../../../types/state.type';
 import { Film } from '../../../types/film/film.type';
-import { Namespace } from '../../../constants/routes';
+import { Namespace } from '../../../constants/webRoutes';
 
 
 export const getFilms = (state: State): Film[] => state[Namespace.Data].films;
