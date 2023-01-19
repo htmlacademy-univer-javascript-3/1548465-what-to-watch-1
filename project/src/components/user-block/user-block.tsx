@@ -4,7 +4,7 @@ import { logoutAction } from '../../store/api-action';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 import { getAuthorizationStatus, getUser } from '../../store/reducer/user/user-selector';
-import { WebRoutes } from '../../constants/webRoutes';
+import { WebRoutes } from '../../constants/routes';
 
 type AuthedUserBlockProps = {
   avatarLink: string;

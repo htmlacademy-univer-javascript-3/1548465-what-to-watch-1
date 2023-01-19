@@ -2,7 +2,7 @@ import React, { FC, FormEvent, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { useNavigate } from 'react-router-dom';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
-import { WebRoutes } from '../../constants/webRoutes';
+import { WebRoutes } from '../../constants/routes';
 import { loginAction } from '../../store/api-action';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';

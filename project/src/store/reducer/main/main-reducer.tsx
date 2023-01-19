@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchFilmsAction, fetchPromoFilm, getFavoriteFilmsAction } from '../../api-action';
 import { changeGenre } from '../../action';
-import { Namespace } from '../../../constants/webRoutes';
+import { Namespace } from '../../../constants/routes';
 import { MainState } from '../../../types/state.type';
 import { ALL_GENRES } from '../../../constants/constants';
 

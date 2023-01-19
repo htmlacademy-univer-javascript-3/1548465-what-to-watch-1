@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FilmState } from '../../../types/state.type';
-import { Namespace } from '../../../constants/webRoutes';
+import { Namespace } from '../../../constants/routes';
 import { fetchFilmById, fetchReviewsById, fetchSimilarById } from '../../api-action';
 
 const initialState: FilmState = {

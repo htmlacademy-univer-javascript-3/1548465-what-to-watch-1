@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { WebRoutes } from '../../constants/webRoutes';
+import { WebRoutes } from '../../constants/routes';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 
 type PrivateRouteProps = {

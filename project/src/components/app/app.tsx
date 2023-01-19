@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import MainPage from '../../pages/main/main-page';
 import NotFoundPage from '../../pages/not-found/not-found-page';
 import AddReviewPage from '../../pages/add-review/add-review-page';
-import { WebRoutes } from '../../constants/webRoutes';
+import { WebRoutes } from '../../constants/routes';
 import MyListPage from '../../pages/my-list/my-list-page';
 import { Route, Routes } from 'react-router-dom';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';

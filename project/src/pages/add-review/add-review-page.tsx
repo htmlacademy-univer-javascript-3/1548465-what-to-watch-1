@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/hooks';
 import { Film } from '../../types/film/film.type';
 import { api } from '../../store';
-import { WebRoutes } from '../../constants/webRoutes';
+import { WebRoutes } from '../../constants/routes';
 import Logo from '../../components/logo/logo';
 import { redirectToRoute } from '../../store/action';
 import { fetchFilmById } from '../../store/api-action';

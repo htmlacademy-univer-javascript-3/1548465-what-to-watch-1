@@ -5,7 +5,7 @@ import moment from 'moment';
 import {useAppDispatch, useAppSelector} from '../../hooks/hooks';
 import {getFilm} from '../../store/reducer/film/film-selector';
 import {fetchFilmById} from '../../store/api-action';
-import { WebRoutes } from '../../constants/webRoutes';
+import { WebRoutes } from '../../constants/routes';
 import PlayButton from '../../components/buttons/play-button/play-button';
 import PauseButton from '../../components/buttons/pause-button/pause-button';
 

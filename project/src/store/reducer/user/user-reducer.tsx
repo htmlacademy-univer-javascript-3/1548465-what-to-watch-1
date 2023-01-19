@@ -3,7 +3,7 @@ import { checkAuthAction, loginAction, logoutAction } from '../../api-action';
 import { dropToken, saveToken } from '../../../services/token';
 import { UserState } from '../../../types/state.type';
 import { AuthorizationStatus } from '../../../types/authorization/authorization-status.enum';
-import { Namespace } from '../../../constants/webRoutes';
+import { Namespace } from '../../../constants/routes';
 
 
 const initialState: UserState = {
