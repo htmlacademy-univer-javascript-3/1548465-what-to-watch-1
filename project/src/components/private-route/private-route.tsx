@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { ROUTES } from '../../constants/routes';
+import { WebRoutes } from '../../constants/routes';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
 
 type PrivateRouteProps = {
@@ -13,6 +13,6 @@ export default function PrivateRoute(props: PrivateRouteProps) {
   return (
     authorizationStatus === AuthorizationStatus.Auth
       ? children
-      : <Navigate to={ROUTES.SIGNIN} />
+      : <Navigate to={WebRoutes.SIGNIN} />
   );
 }

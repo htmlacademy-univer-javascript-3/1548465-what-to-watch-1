@@ -2,7 +2,7 @@ import React, { FC, FormEvent, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { useNavigate } from 'react-router-dom';
 import { AuthorizationStatus } from '../../types/authorization/authorization-status.enum';
-import { ROUTES } from '../../constants/routes';
+import { WebRoutes } from '../../constants/routes';
 import { loginAction } from '../../store/api-action';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
@@ -17,7 +17,7 @@ const SignInPage: FC = () => {
   const isValidPassword = (password: string): boolean => /\d+[a-zA-Z]+|[a-zA-Z]+\d+/.test(password);
 
   if (authorizationStatus === AuthorizationStatus.Auth){
-    navigate(ROUTES.MAIN);
+    navigate(WebRoutes.MAIN);
   }
 
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -27,7 +27,7 @@ const SignInPage: FC = () => {
 
   const onSubmit = (authData: AuthorizationResponse) => {
     dispatch(loginAction(authData))
-      .then(() => navigate(ROUTES.MAIN))
+      .then(() => navigate(WebRoutes.MAIN))
       .catch(() => setIsError(true));
   };
 

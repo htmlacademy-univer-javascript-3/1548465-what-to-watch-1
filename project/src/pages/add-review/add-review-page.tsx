@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/hooks';
 import { Film } from '../../types/film/film.type';
 import { api } from '../../store';
-import { ROUTES } from '../../constants/routes';
+import { WebRoutes } from '../../constants/routes';
 import Logo from '../../components/logo/logo';
 import { redirectToRoute } from '../../store/action';
 import { fetchFilmById } from '../../store/api-action';
@@ -24,7 +24,7 @@ const AddReviewPage: FC = () => {
         dispatch(fetchFilmById(data.id));
         setFilm(data);
       } else {
-        dispatch(redirectToRoute(ROUTES.NOTFOUND));
+        dispatch(redirectToRoute(WebRoutes.NOTFOUND));
       }
     });
   }, [dispatch, id, filmId]);
